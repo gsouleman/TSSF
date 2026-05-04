@@ -1,0 +1,300 @@
+/**
+ * Solidarity of Hearts Hospital — corporate financial reporting theme
+ * (navy / medium blue / zebra rows — screen + print).
+ * Works with .hms-fin-report.hms-ohada-report and .hms-fin-doc masthead.
+ */
+
+:root {
+    --hms-fin-navy: #1a3a6c;
+    --hms-fin-navy-dark: #142d52;
+    --hms-fin-blue: #2f6fad;
+    --hms-fin-blue-med: #3d7fcb;
+    --hms-fin-row-a: #ffffff;
+    --hms-fin-row-b: #eef4fa;
+    --hms-fin-meta-bg: #e8f0fa;
+    --hms-fin-total-bg: #d6e8f8;
+    --hms-fin-border: #c5d4e8;
+}
+
+/* Outer report shell */
+.hms-fin-report.hms-ohada-report.hms-fin-report--corp,
+.hms-fin-report.hms-ohada-report {
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid var(--hms-fin-border);
+    border-radius: 4px;
+    background: var(--hms-fin-row-a);
+    box-shadow: 0 4px 24px rgba(26, 58, 108, 0.08);
+}
+
+.hms-fin-report.hms-ohada-report > .hms-fin-doc {
+    margin: 0;
+}
+
+/* Masthead */
+.hms-fin-doc__mast {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.1rem 1.5rem;
+    background: linear-gradient(180deg, var(--hms-fin-navy) 0%, var(--hms-fin-navy-dark) 100%);
+    color: #fff;
+    border-bottom: 4px solid var(--hms-fin-blue);
+}
+
+.hms-fin-doc__mast-logo-wrap {
+    flex: 0 0 auto;
+    width: 72px;
+    height: 72px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hms-fin-doc__mast-logo {
+    max-width: 60px;
+    max-height: 60px;
+    object-fit: contain;
+}
+
+.hms-fin-doc__mast-center {
+    flex: 1 1 220px;
+    text-align: center;
+    min-width: 0;
+}
+
+.hms-fin-doc__title {
+    margin: 0;
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 1.2;
+}
+
+.hms-fin-doc__tagline {
+    margin: 0.4rem 0 0;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Metadata strips */
+.hms-fin-doc__fields {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.75rem 1.25rem;
+    padding: 0.85rem 1.5rem;
+    border-bottom: 1px solid var(--hms-fin-border);
+}
+
+.hms-fin-doc__fields--primary {
+    background: #fff;
+}
+
+.hms-fin-doc__fields--secondary {
+    background: var(--hms-fin-meta-bg);
+}
+
+.hms-fin-doc__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.hms-fin-doc__field-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #64748b;
+}
+
+.hms-fin-doc__field-value {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #0f172a;
+    border-bottom: 1px solid #cbd5e1;
+    min-height: 1.35rem;
+    padding-bottom: 0.1rem;
+}
+
+/* Section bar (medium blue) */
+.hms-fin-section-bar {
+    margin: 0;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    background: linear-gradient(90deg, var(--hms-fin-blue) 0%, var(--hms-fin-blue-med) 100%);
+    border: none;
+    border-top: 1px solid var(--hms-fin-border);
+}
+
+.hms-fin-report .hms-fin-doc + .hms-fin-section-bar {
+    border-top: none;
+}
+
+/* Corporate tables */
+.hms-fin-table-wrap {
+    padding: 0 0 1rem;
+}
+
+.hms-fin-table {
+    width: 100%;
+    margin-bottom: 0;
+    font-size: 0.8125rem;
+    border-collapse: collapse;
+}
+
+.hms-fin-table thead th {
+    background: var(--hms-fin-navy) !important;
+    color: #fff !important;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border: 1px solid var(--hms-fin-navy-dark) !important;
+    padding: 0.55rem 0.65rem;
+    vertical-align: middle;
+}
+
+.hms-fin-table tbody td {
+    border: 1px solid var(--hms-fin-border);
+    padding: 0.45rem 0.65rem;
+    vertical-align: middle;
+}
+
+.hms-fin-table--striped tbody tr:nth-child(even) td {
+    background: var(--hms-fin-row-b);
+}
+
+.hms-fin-table--striped tbody tr:nth-child(odd) td {
+    background: var(--hms-fin-row-a);
+}
+
+.hms-fin-table tfoot td,
+.hms-fin-table .hms-fin-total-row td {
+    background: var(--hms-fin-total-bg) !important;
+    font-weight: 800;
+    border-top: 2px solid var(--hms-fin-blue);
+}
+
+.hms-fin-check-row {
+    margin: 0 1.25rem 1rem;
+    padding: 0.65rem 1rem;
+    background: var(--hms-fin-total-bg);
+    border: 1px solid var(--hms-fin-border);
+    border-radius: 4px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--hms-fin-navy);
+}
+
+.hms-fin-doc__footer-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.92);
+    background: var(--hms-fin-navy-dark);
+    border-top: 2px solid var(--hms-fin-blue);
+}
+
+/* Legacy brand block (journal loader mini) — align to corp colors */
+.hms-fin-report-brand {
+    background: linear-gradient(180deg, var(--hms-fin-navy) 0%, var(--hms-fin-navy-dark) 100%);
+    border-bottom: 4px solid var(--hms-fin-blue);
+}
+
+.hms-fin-report-brand__org {
+    letter-spacing: 0.06em;
+}
+
+.hms-fin-report-brand__tag {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.hms-fin-report-sig__label {
+    color: #475569;
+}
+
+/* Inner document title area (when used below masthead) */
+.hms-fin-report .hms-ohada-report__head {
+    padding: 1rem 1.25rem 0.5rem;
+    margin: 0;
+    border: none;
+}
+
+.hms-fin-report .hms-ohada-report__title {
+    color: var(--hms-fin-navy);
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.hms-fin-report .hms-ohada-report__sub {
+    color: #475569;
+}
+
+.hms-fin-report .hms-ohada-disclaimer {
+    margin: 0 1.25rem 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px dashed var(--hms-fin-border);
+    font-size: 0.72rem;
+    color: #64748b;
+}
+
+.hms-fin-report-sig__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.hms-fin-report-sig__grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 768px) {
+    .hms-fin-report-sig__grid--3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+.hms-fin-report-sig__line {
+    border-bottom: 1px solid #94a3b8;
+    min-height: 2.25rem;
+    margin-bottom: 0.35rem;
+}
+
+.hms-fin-report-sig {
+    margin: 1rem 1.25rem 0;
+    padding: 1rem 0 0;
+    border-top: 1px dashed var(--hms-fin-border);
+}
+
+@media print {
+    .hms-fin-report.hms-ohada-report {
+        box-shadow: none !important;
+    }
+
+    .hms-fin-doc__mast,
+    .hms-fin-table thead th,
+    .hms-fin-section-bar {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}

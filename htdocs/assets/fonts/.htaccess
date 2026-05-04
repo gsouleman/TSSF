@@ -1,0 +1,8 @@
+# Help hosts serve webfonts with correct types (avoids 404 / HTML error pages for .woff2).
+<IfModule mod_mime.c>
+    AddType font/woff2 .woff2
+    AddType font/woff .woff
+    AddType application/vnd.ms-fontobject .eot
+    AddType font/ttf .ttf
+    AddType image/svg+xml .svg
+</IfModule>

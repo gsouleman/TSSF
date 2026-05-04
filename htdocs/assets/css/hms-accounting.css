@@ -1,0 +1,157 @@
+/**
+ * Core accounting (Cameroon / OHADA / XAF) — hub and financials pages
+ */
+
+.hms-accounting {
+    --acct-accent: #0369a1;
+    --acct-accent-2: var(--hms-primary, #0c8b8b);
+    --acct-accent-soft: rgba(3, 105, 161, 0.1);
+    --acct-ink: var(--hms-text, #0f172a);
+    --acct-muted: var(--hms-text-muted, #64748b);
+    --acct-line: var(--hms-border, #e2e8f0);
+    --acct-radius: var(--hms-radius, 12px);
+    --acct-radius-sm: var(--hms-radius-sm, 8px);
+    --acct-shadow: var(--hms-shadow, 0 1px 3px rgba(15, 23, 42, 0.06), 0 4px 24px rgba(15, 23, 42, 0.04));
+}
+
+.hms-acct-hero {
+    border-radius: var(--acct-radius);
+    padding: 1.55rem 1.65rem 1.4rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+    background: linear-gradient(120deg, #0c4a6e 0%, var(--acct-accent) 42%, #0f766e 100%);
+    box-shadow: 0 12px 36px rgba(3, 105, 161, 0.22), var(--acct-shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.hms-acct-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 75% 55% at 100% 0%, rgba(255, 255, 255, 0.14), transparent 52%);
+    pointer-events: none;
+}
+
+.hms-acct-hero-inner {
+    position: relative;
+    z-index: 1;
+}
+
+.hms-acct-hero-eyebrow {
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.92;
+    display: block;
+    margin-bottom: 0.35rem;
+}
+
+.hms-acct-hero-title {
+    font-size: 1.55rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin: 0 0 0.45rem;
+    line-height: 1.2;
+}
+
+.hms-acct-hero-lead {
+    font-size: 0.92rem;
+    opacity: 0.93;
+    max-width: 44rem;
+    margin: 0;
+    line-height: 1.55;
+}
+
+.hms-acct-kpi-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+}
+
+.hms-acct-kpi {
+    background: #fff;
+    border: 1px solid var(--acct-line);
+    border-radius: var(--acct-radius-sm);
+    padding: 1rem 1.1rem;
+    box-shadow: var(--acct-shadow);
+}
+
+.hms-acct-kpi-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--acct-muted);
+    margin-bottom: 0.3rem;
+}
+
+.hms-acct-kpi-value {
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--acct-ink);
+    font-variant-numeric: tabular-nums;
+}
+
+.hms-acct-kpi--ok .hms-acct-kpi-value {
+    color: #047857;
+}
+
+.hms-acct-kpi--warn .hms-acct-kpi-value {
+    color: #b45309;
+}
+
+.hms-acct-section {
+    margin-bottom: 2rem;
+}
+
+.hms-acct-section-title {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--acct-muted);
+    margin-bottom: 0.35rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--acct-accent-soft);
+}
+
+.hms-acct-section-intro {
+    font-size: 0.875rem;
+    color: var(--acct-muted);
+    margin-bottom: 1rem;
+    max-width: 48rem;
+    line-height: 1.5;
+}
+
+.hms-accounting .hms-hub-card {
+    border-radius: var(--acct-radius);
+    border: 1px solid var(--acct-line);
+    transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+}
+
+.hms-accounting .hms-hub-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+    border-color: rgba(3, 105, 161, 0.28);
+}
+
+.hms-accounting .hms-hub-card-icon {
+    background: var(--acct-accent-soft) !important;
+    color: var(--acct-accent) !important;
+}
+
+.hms-accounting .hms-fin-status-panel,
+.hms-accounting .card.hms-fin-status-panel {
+    border-radius: var(--acct-radius);
+    border: 1px solid var(--acct-line);
+}
+
+@media (max-width: 575.98px) {
+    .hms-acct-hero-title {
+        font-size: 1.28rem;
+    }
+}

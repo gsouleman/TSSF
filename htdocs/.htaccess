@@ -1,0 +1,6 @@
+# InfinityFree: keep this minimal. Many free hosts return 500 if Options or
+# Header directives are not allowed in .htaccess.
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+</IfModule>

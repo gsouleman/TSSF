@@ -1,0 +1,167 @@
+/**
+ * Inventory & stock — modern layer (uses hms-modern.css variables)
+ */
+
+.hms-inventory {
+    --inv-accent: var(--hms-primary, #0c8b8b);
+    --inv-accent-soft: var(--hms-primary-soft, rgba(12, 139, 139, 0.12));
+    --inv-ink: var(--hms-text, #0f172a);
+    --inv-muted: var(--hms-text-muted, #64748b);
+    --inv-line: var(--hms-border, #e2e8f0);
+    --inv-radius: var(--hms-radius, 12px);
+    --inv-radius-sm: var(--hms-radius-sm, 8px);
+    --inv-shadow: var(--hms-shadow, 0 1px 3px rgba(15, 23, 42, 0.06), 0 4px 24px rgba(15, 23, 42, 0.04));
+}
+
+.hms-inv-hero {
+    border-radius: var(--inv-radius);
+    padding: 1.5rem 1.65rem 1.35rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+    background: linear-gradient(118deg, #0e7490 0%, var(--inv-accent) 45%, #134e4a 100%);
+    box-shadow: 0 12px 36px rgba(14, 116, 144, 0.22), var(--inv-shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.hms-inv-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 55% at 100% 0%, rgba(255, 255, 255, 0.16), transparent 50%);
+    pointer-events: none;
+}
+
+.hms-inv-hero-inner {
+    position: relative;
+    z-index: 1;
+}
+
+.hms-inv-hero-eyebrow {
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.9;
+    display: block;
+    margin-bottom: 0.35rem;
+}
+
+.hms-inv-hero-title {
+    font-size: 1.55rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin: 0 0 0.4rem;
+    line-height: 1.2;
+}
+
+.hms-inv-hero-lead {
+    font-size: 0.92rem;
+    opacity: 0.92;
+    max-width: 40rem;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.hms-inv-kpi-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.hms-inv-kpi {
+    background: #fff;
+    border: 1px solid var(--inv-line);
+    border-radius: var(--inv-radius-sm);
+    padding: 1rem 1.1rem;
+    box-shadow: var(--inv-shadow);
+}
+
+.hms-inv-kpi-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--inv-muted);
+    margin-bottom: 0.3rem;
+}
+
+.hms-inv-kpi-value {
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--inv-ink);
+    font-variant-numeric: tabular-nums;
+}
+
+.hms-inv-kpi--warn .hms-inv-kpi-value {
+    color: #b45309;
+}
+
+.hms-inv-kpi--danger .hms-inv-kpi-value {
+    color: #b91c1c;
+}
+
+.hms-inventory .card {
+    border-radius: var(--inv-radius);
+    border: 1px solid var(--inv-line);
+    box-shadow: var(--inv-shadow);
+}
+
+.hms-inventory .card-header {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--inv-muted);
+    background: linear-gradient(180deg, #fff 0%, #f8fafc 100%);
+    border-bottom: 1px solid var(--inv-line);
+}
+
+.hms-inventory .hms-inv-stock-search {
+    background: #f8fafc;
+    border-bottom: 1px solid var(--inv-line);
+}
+
+.hms-inventory .table thead th {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--inv-muted);
+    border-top: 0;
+    background: #f1f5f9;
+}
+
+.hms-inventory .btn-primary {
+    background: linear-gradient(180deg, #0d9488 0%, var(--inv-accent) 100%);
+    border-color: #0f766e;
+    font-weight: 600;
+    border-radius: var(--inv-radius-sm);
+}
+
+.hms-inventory .btn-primary:hover {
+    background: linear-gradient(180deg, #0f766e 0%, #0d9488 100%);
+    border-color: #115e59;
+}
+
+.hms-inventory .form-control {
+    border-radius: var(--inv-radius-sm);
+}
+
+.hms-inventory .form-control:focus {
+    border-color: var(--inv-accent);
+    box-shadow: 0 0 0 0.2rem var(--inv-accent-soft);
+}
+
+@media (max-width: 575.98px) {
+    .hms-inv-hero-title {
+        font-size: 1.3rem;
+    }
+}
+
+/* Stock-only dashboard (dashboard.php branch) */
+.hms-dash-inv .hms-inv-hero {
+    margin-bottom: 0;
+}

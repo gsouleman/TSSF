@@ -1,0 +1,130 @@
+/**
+ * Modern HMS-style forms, lists, and module layout (Bootstrap 4 compatible).
+ */
+.hms-module .content {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hms-breadcrumb {
+    font-size: 0.8125rem;
+}
+
+.hms-breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+    content: "›";
+    color: #94a3b8;
+}
+
+.hms-page-heading {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--hms-text, #0f172a);
+}
+
+.hms-page-toolbar {
+    border-radius: var(--hms-radius, 12px) !important;
+}
+
+/* Data list card */
+.hms-data-card {
+    border-radius: var(--hms-radius, 12px) !important;
+    overflow: hidden;
+}
+
+.hms-data-card .table {
+    margin-bottom: 0;
+}
+
+.hms-data-card .table thead th {
+    border-top: none;
+    background: #f8fafc;
+    vertical-align: middle;
+}
+
+.hms-data-card .table tbody td {
+    vertical-align: middle;
+}
+
+/* Form card */
+.hms-form-card {
+    border-radius: var(--hms-radius, 12px) !important;
+}
+
+.hms-form-section {
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid var(--hms-border, #e2e8f0);
+}
+
+.hms-form-section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.hms-form-section-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--hms-text-muted, #64748b);
+    margin-bottom: 1rem;
+}
+
+.hms-form-card .form-group label,
+.hms-form-card label:not(.form-check-label) {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 0.35rem;
+}
+
+.hms-form-card .form-control,
+.hms-form-card .select2-container {
+    font-size: 0.9375rem;
+}
+
+.hms-form-footer {
+    border-top: 1px solid var(--hms-border, #e2e8f0) !important;
+    border-radius: 0 0 var(--hms-radius, 12px) var(--hms-radius, 12px);
+}
+
+.hms-form-card .gender-select .form-check-inline {
+    margin-top: 0.35rem;
+}
+
+.hms-required {
+    color: #dc3545;
+    font-weight: 700;
+}
+
+/* Empty state for tables */
+.hms-empty-hint {
+    padding: 2rem 1.5rem;
+    text-align: center;
+    color: #64748b;
+    font-size: 0.9375rem;
+}
+
+/* Action column */
+.hms-table-actions .dropdown-toggle::after {
+    display: none;
+}
+
+/* ADT bed board tiles */
+.hms-bed-tile {
+    border-radius: var(--hms-radius, 12px) !important;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.hms-bed-tile:hover {
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.1) !important;
+}
+
+.hms-bed-tile .badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.35em 0.55em;
+}

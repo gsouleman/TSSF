@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HMS — Demo Presentation</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --accent: #0c8b8b;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; font-family: "Segoe UI", system-ui, sans-serif; background: var(--bg); color: var(--text); }
+    .deck { height: 100vh; overflow: hidden; position: relative; }
+    .slide {
+      display: none;
+      min-height: 100vh;
+      padding: 3rem clamp(1.5rem, 5vw, 4rem);
+      flex-direction: column;
+      justify-content: center;
+      max-width: 56rem;
+      margin: 0 auto;
+    }
+    .slide.active { display: flex; }
+    h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; margin: 0 0 1rem; line-height: 1.2; }
+    h2 { font-size: clamp(1.25rem, 3vw, 1.75rem); color: var(--accent); margin: 0 0 1.25rem; font-weight: 700; }
+    p, li { font-size: clamp(1rem, 2.2vw, 1.15rem); line-height: 1.55; color: var(--muted); }
+    ul { padding-left: 1.25rem; }
+    li { margin-bottom: 0.5rem; }
+    .tag { display: inline-block; background: rgba(12,139,139,0.2); color: #5eead4; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; margin-bottom: 1rem; }
+    .footer-hint {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: center;
+      background: rgba(15,23,42,0.9);
+    }
+    .footer-hint kbd { background: #334155; padding: 2px 6px; border-radius: 4px; }
+    @media print {
+      .footer-hint { display: none; }
+      .slide { display: flex !important; page-break-after: always; min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="deck" id="deck" aria-live="polite">
+
+    <section class="slide active" data-slide="1">
+      <span class="tag">Hospital Management System</span>
+      <h1>HMS — Product demo</h1>
+      <p>A concise walkthrough for stakeholders: what the platform does, who it serves, and how the main workflows connect.</p>
+      <p style="margin-top:2rem;"><strong style="color:var(--text);">Tip:</strong> Use <kbd>→</kbd> / <kbd>←</kbd> or click to advance (see bottom bar).</p>
+    </section>
+
+    <section class="slide" data-slide="2">
+      <h2>What is HMS?</h2>
+      <ul>
+        <li>Web-based hospital operations software (PHP + MySQL/MariaDB).</li>
+        <li>Supports multiple facilities (sites) with scoped data and switching.</li>
+        <li>Covers front office, clinical documentation, labs &amp; imaging, pharmacy, billing, insurance, inventory, and reporting.</li>
+      </ul>
+    </section>
+
+    <section class="slide" data-slide="3">
+      <h2>Who is it for?</h2>
+      <ul>
+        <li><strong style="color:var(--text);">Clinical:</strong> doctors, nurses — chart, vitals, consultations.</li>
+        <li><strong style="color:var(--text);">Diagnostics:</strong> laboratory &amp; radiology — orders, results, PDF reports.</li>
+        <li><strong style="color:var(--text);">Revenue cycle:</strong> cashier, billing, insurance configuration.</li>
+        <li><strong style="color:var(--text);">Patients:</strong> optional portal for appointments and result notices.</li>
+        <li><strong style="color:var(--text);">Administration:</strong> staff, facilities, audit, security.</li>
+      </ul>
+    </section>
+
+    <section class="slide" data-slide="4">
+      <h2>Architecture in one slide</h2>
+      <ul>
+        <li><strong style="color:var(--text);">Presentation:</strong> PHP pages + shared layout (header/footer).</li>
+        <li><strong style="color:var(--text);">Domain logic:</strong> reusable modules under <code style="color:#a5b4fc;">includes/</code>.</li>
+        <li><strong style="color:var(--text);">Data:</strong> relational schema evolved via SQL migrations.</li>
+        <li><strong style="color:var(--text);">Security:</strong> sessions, CSRF tokens, role/ACL checks, audit log.</li>
+        <li><strong style="color:var(--text);">PDFs:</strong> receipts, clinical results, inventory reports (Dompdf).</li>
+      </ul>
+    </section>
+
+    <section class="slide" data-slide="5">
+      <h2>Patient journey (happy path)</h2>
+      <ol style="color:var(--muted);">
+        <li>Register / find patient — <em>Patients</em>.</li>
+        <li>OPD queue &amp; triage — vitals optional.</li>
+        <li>Consultation — chief complaint, prescribed lab/radiology lines.</li>
+        <li>Cashier — payment code, partial pay, receipts.</li>
+        <li>Lab / radiology — verify code, capture results, finalize.</li>
+        <li>Pharmacy — dispense; stock may link to inventory.</li>
+      </ol>
+    </section>
+
+    <section class="slide" data-slide="6">
+      <h2>Clinical chart &amp; documentation</h2>
+      <ul>
+        <li>Allergies, medications, vitals, consultations summary.</li>
+        <li>Prescribed tests and linked results when available.</li>
+        <li>Primary insurance % for patient co-pay at cashier.</li>
+        <li>External documents (outside lab/imaging) uploaded for continuity of care.</li>
+      </ul>
+    </section>
+
+    <section class="slide" data-slide="7">
+      <h2>Billing &amp; insurance</h2>
+      <ul>
+        <li>Service catalog and charges; receipts &amp; company invoices.</li>
+        <li>Payment tickets bundle consultation + prescribed lines.</li>
+        <li>Insurer/carrier setup; patient policy and flexible insurer/patient split (0–100%).</li>
+        <li>Credit / receivables and expense register (when migrations applied).</li>
+      </ul>
+    </section>
+
+    <section class="slide" data-slide="8">
+      <h2>Inventory &amp; pharmacy</h2>
+      <ul>
+        <li>Stock items with automatic SKU, categories, reorder alerts.</li>
+        <li>Stock movements (receive, adjust, dispense from prescription).</li>
+        <li>Medical supply catalogue suggestions by category on add item.</li>
+      </ul>
+    </section>
+
+    <section class="slide" data-slide="9">
+      <h2>Staff portals</h2>
+      <ul>
+        <li>Focused landing pages: doctors, nursing, laboratory, radiology, pharmacy, cashier, accountant, front desk.</li>
+        <li>Role-based navigation; ACL can refine permissions per deployment.</li>
+      </ul>
+    </section>
+
+    <section class="slide" data-slide="10">
+      <h2>Integrations &amp; APIs</h2>
+      <ul>
+        <li>REST-style JSON API (v1) for selected resources (auth, facilities, patients, appointments, …).</li>
+        <li>Sample FHIR Patient read for interoperability demos.</li>
+      </ul>
+    </section>
+
+    <section class="slide" data-slide="11">
+      <h2>Demo script (5 minutes)</h2>
+      <ol style="color:var(--muted);">
+        <li>Show dashboard / portal for your persona.</li>
+        <li>Open a patient → clinical chart → consultation link.</li>
+        <li>Show cashier payment code and a receipt PDF.</li>
+        <li>Open lab or radiology portal → service code verify → result workflow.</li>
+        <li>Optional: inventory low-stock alert and PDF catalog.</li>
+      </ol>
+    </section>
+
+    <section class="slide" data-slide="12">
+      <h2>Documentation in this project</h2>
+      <ul>
+        <li><strong style="color:var(--text);">User Guide / Users Manual:</strong> <code style="color:#a5b4fc;">docs/user-guide-pdf.php</code> · <code style="color:#a5b4fc;">docs/users-manual-pdf.php</code></li>
+        <li><strong style="color:var(--text);">Architecture &amp; workflow PDFs:</strong> <code style="color:#a5b4fc;">docs/architecture-document-pdf.php</code> · <code style="color:#a5b4fc;">docs/workflow-document-pdf.php</code></li>
+        <li><strong style="color:var(--text);">Setup &amp; migrations:</strong> <code style="color:#a5b4fc;">platform-overview.php</code> (in-app).</li>
+        <li><strong style="color:var(--text);">This deck:</strong> open this HTML file in a browser; print to PDF if a static file is required.</li>
+      </ul>
+    </section>
+
+    <section class="slide" data-slide="13">
+      <h2>Thank you</h2>
+      <p>Questions? Align on pilot scope, migration order for your database, and which portals roll out first.</p>
+      <p style="margin-top:2rem;font-size:0.95rem;">Hospital Management System (HMS) — Demo presentation v1.0</p>
+    </section>
+
+  </div>
+  <div class="footer-hint">
+    Slide <span id="cur">1</span> / <span id="total">13</span> ·
+    <kbd>←</kbd> <kbd>→</kbd> navigate ·
+    <kbd>Ctrl</kbd>+<kbd>P</kbd> print / save as PDF
+  </div>
+  <script>
+(function () {
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var total = slides.length;
+  var idx = 0;
+  document.getElementById('total').textContent = String(total);
+  function show(i) {
+    if (i < 0 || i >= total) return;
+    idx = i;
+    slides.forEach(function (s, j) { s.classList.toggle('active', j === idx); });
+    document.getElementById('cur').textContent = String(idx + 1);
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); show(idx + 1); }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); show(idx - 1); }
+    if (e.key === 'Home') { e.preventDefault(); show(0); }
+    if (e.key === 'End') { e.preventDefault(); show(total - 1); }
+  });
+  document.body.addEventListener('click', function (e) {
+    if (e.target.closest('a, kbd, code')) return;
+    var w = window.innerWidth;
+    show(idx + (e.clientX > w / 2 ? 1 : -1));
+  });
+})();
+  </script>
+</body>
+</html>

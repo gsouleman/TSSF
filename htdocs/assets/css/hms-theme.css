@@ -1,0 +1,42 @@
+/**
+ * HMS — clinical, calm palette; works with existing Bootstrap layout.
+ */
+:root {
+    --hms-primary: #0c8b8b;
+    --hms-primary-dark: #067070;
+    --hms-accent: #e8f4f4;
+    --hms-text: #1a2b2b;
+}
+
+body.account-page {
+    background: linear-gradient(145deg, #f0f7f7 0%, #e2f0f0 45%, #d5e8e8 100%);
+    min-height: 100vh;
+}
+
+.account-box {
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(13, 107, 107, 0.12);
+    border: 1px solid rgba(13, 107, 107, 0.08);
+}
+
+.account-box .account-logo span,
+.account-box .form-signin .btn-primary {
+    background-color: var(--hms-primary);
+    border-color: var(--hms-primary);
+}
+
+.account-box .form-signin .btn-primary:hover {
+    background-color: var(--hms-primary-dark);
+    border-color: var(--hms-primary-dark);
+}
+
+.hms-login-title {
+    font-size: 0.95rem;
+    color: #5a6a6a;
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+.header .header-left .logo span {
+    color: var(--hms-primary);
+}

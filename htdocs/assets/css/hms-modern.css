@@ -1,0 +1,2193 @@
+/**
+ * HMS modern shell — layered on Bootstrap 4 + existing style.css
+ */
+:root {
+    --hms-surface: #f4f6f9;
+    --hms-surface-elevated: #ffffff;
+    --hms-border: #e2e8f0;
+    --hms-text: #0f172a;
+    --hms-text-muted: #64748b;
+    --hms-primary: #0c8b8b;
+    --hms-primary-hover: #067070;
+    --hms-primary-soft: rgba(12, 139, 139, 0.1);
+    /* Sidebar — modern clinical HMS shell (deep slate + teal accent rail) */
+    --hms-sidebar-bg: #0b1220;
+    --hms-sidebar-bg-mid: #0f172a;
+    --hms-sidebar-bg-deep: #080f1a;
+    --hms-sidebar-edge: rgba(148, 163, 184, 0.12);
+    --hms-sidebar-divider: rgba(255, 255, 255, 0.08);
+    --hms-sidebar-text: #94a3b8;
+    --hms-sidebar-text-strong: #e2e8f0;
+    --hms-sidebar-hover-bg: rgba(255, 255, 255, 0.06);
+    --hms-sidebar-active: #14b8a6;
+    --hms-sidebar-accent: #2dd4bf;
+    --hms-sidebar-accent-deep: #0d9488;
+    --hms-sidebar-accent-glow: rgba(45, 212, 191, 0.22);
+    --hms-sidebar-active-row: linear-gradient(
+        90deg,
+        rgba(13, 148, 136, 0.42) 0%,
+        rgba(13, 148, 136, 0.12) 55%,
+        transparent 100%
+    );
+    --hms-sidebar-parent-open: linear-gradient(
+        90deg,
+        rgba(45, 212, 191, 0.2) 0%,
+        rgba(14, 116, 144, 0.12) 100%
+    );
+    --hms-sidebar-submenu-surface: rgba(2, 6, 23, 0.55);
+    --hms-sidebar-rail: rgba(45, 212, 191, 0.48);
+    --hms-header-bg: #ffffff;
+    --hms-radius: 12px;
+    --hms-radius-sm: 8px;
+    --hms-shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 4px 24px rgba(15, 23, 42, 0.04);
+    --hms-font: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+html {
+    font-size: 15px;
+}
+
+body {
+    font-family: var(--hms-font);
+    color: var(--hms-text);
+    background-color: var(--hms-surface) !important;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Top bar */
+.header {
+    background: var(--hms-header-bg) !important;
+    border-bottom: 1px solid var(--hms-border) !important;
+    box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04);
+}
+
+.header .header-left .logo span {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--hms-primary) !important;
+}
+
+.header .nav-link {
+    color: var(--hms-text) !important;
+    border-radius: var(--hms-radius-sm);
+}
+
+.header .nav-link:hover {
+    background: var(--hms-surface);
+}
+
+.header #mobile_btn,
+.header .mobile-user-menu > a {
+    color: var(--hms-text-muted) !important;
+}
+
+/* Sidebar */
+.sidebar {
+    background: linear-gradient(
+        175deg,
+        var(--hms-sidebar-bg-mid) 0%,
+        var(--hms-sidebar-bg) 38%,
+        var(--hms-sidebar-bg-deep) 100%
+    ) !important;
+    border-right: 1px solid var(--hms-sidebar-edge) !important;
+    box-shadow: 4px 0 40px rgba(2, 6, 23, 0.45);
+    /* Fixed sidebar must have a usable height for slimScroll / inner content */
+    min-height: calc(100vh - 50px);
+}
+
+.sidebar .sidebar-inner {
+    min-height: calc(100vh - 50px);
+}
+
+.sidebar .slimScrollDiv {
+    min-height: calc(100vh - 50px);
+}
+
+.hms-sidebar-brand {
+    border-bottom: 1px solid var(--hms-sidebar-divider);
+}
+
+.hms-sidebar-brand-mark {
+    width: 100%;
+}
+
+.hms-sidebar-brand-line1,
+.hms-sidebar-brand-line2 {
+    display: block;
+    color: #fff;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.hms-sidebar-brand-line1 {
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-align: center;
+}
+
+.hms-sidebar-brand-line2 {
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    margin-top: 0.2rem;
+    text-align: center;
+}
+
+.sidebar-menu ul {
+    font-size: 13px;
+}
+
+.sidebar-menu li.menu-title {
+    color: #64748b !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 18px 20px 8px !important;
+    margin-top: 4px;
+    border-top: 1px solid var(--hms-sidebar-divider);
+}
+
+.sidebar-menu li.menu-title:first-child {
+    border-top: none;
+    margin-top: 0;
+    padding-top: 12px !important;
+}
+
+/* SOA / HMS section labels — override generic menu-title when modern nav is used */
+#sidebar-menu.hms-sidebar-nav li.hms-sidebar-menu-title {
+    color: var(--hms-sidebar-text) !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 18px 20px 8px !important;
+    margin-top: 4px;
+    border-top: 1px solid var(--hms-sidebar-divider);
+}
+
+#sidebar-menu.hms-sidebar-nav li.hms-sidebar-menu-title:first-child,
+#sidebar-menu.hms-sidebar-nav li.hms-sidebar-menu-title--product {
+    border-top: none;
+}
+
+#sidebar-menu.hms-sidebar-nav li.hms-sidebar-menu-title--product {
+    font-size: 0.95rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--hms-sidebar-text-strong) !important;
+    text-shadow: 0 0 28px var(--hms-sidebar-accent-glow);
+    padding: 20px 20px 12px !important;
+    margin: 0 0 6px;
+    border-bottom: 1px solid var(--hms-sidebar-divider) !important;
+}
+
+/* Patients module — sidebar group (Dreams EMR–style nested items) */
+.hms-sidebar-group--patients .hms-sidebar-list {
+    border-left: 2px solid var(--hms-sidebar-rail);
+    margin-left: 0.5rem;
+    padding-left: 0.35rem;
+}
+
+.hms-sidebar-group--doctors .hms-sidebar-list {
+    border-left: 2px solid rgba(59, 130, 246, 0.4);
+    margin-left: 0.5rem;
+    padding-left: 0.35rem;
+}
+
+.hms-doctors-page .hms-doctors-shell {
+    border-radius: var(--hms-radius) !important;
+    border: 1px solid var(--hms-border) !important;
+    overflow: hidden;
+}
+
+.hms-doctors-page .hms-doctors-search-input {
+    border-radius: 999px !important;
+    border: 1px solid var(--hms-border) !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+}
+
+/* Doctors module — Dreams EMR card grid (https://dreamsemr.dreamstechnologies.com/react/doctors) */
+.hms-doctors-page .hms-doctors-toolbar-row .btn-group .btn.active {
+    background: #0d6efd;
+    border-color: #0d6efd;
+    color: #fff;
+}
+
+.hms-doctors-page .hms-doctors-keyword-search {
+    border-radius: 999px !important;
+    border: 1px solid var(--hms-border) !important;
+    max-width: 100%;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+}
+
+.hms-doctor-card {
+    border-radius: var(--hms-radius) !important;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.hms-doctor-card:hover {
+    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.1) !important;
+    transform: translateY(-2px);
+}
+
+.hms-doctor-card--inactive {
+    opacity: 0.85;
+}
+
+.hms-dcard-id {
+    font-weight: 700;
+    font-size: 0.7rem;
+    padding: 0.4em 0.65em;
+    border-radius: 8px;
+    background: #e0f2fe;
+    color: #0369a1;
+}
+
+.hms-dcard-more {
+    line-height: 1;
+    min-width: 2rem;
+}
+
+.hms-dcard-avatar-wrap {
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.hms-dcard-avatar {
+    object-fit: cover;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.12);
+}
+
+.hms-dcard-status {
+    position: absolute;
+    right: 2px;
+    bottom: 2px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #94a3b8;
+    border: 2px solid #fff;
+}
+
+.hms-dcard-status--online {
+    background: #22c55e;
+}
+
+.hms-dcard-name {
+    font-size: 1.05rem;
+    letter-spacing: -0.02em;
+    color: var(--hms-text);
+}
+
+.hms-dcard-specialty {
+    line-height: 1.35;
+}
+
+.hms-dcard-stats {
+    border: 1px solid var(--hms-border);
+    border-radius: var(--hms-radius-sm);
+    background: #fafafa;
+    overflow: hidden;
+}
+
+.hms-dcard-stat-cell {
+    padding: 0.65rem 0.35rem;
+}
+
+.hms-dcard-stat-cell:first-child {
+    border-right: 1px solid var(--hms-border);
+}
+
+.hms-dcard-stat-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--hms-text-muted);
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.hms-dcard-stat-value {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--hms-text);
+}
+
+.hms-dcard-contact {
+    color: var(--hms-text);
+    border-top: 1px solid var(--hms-border);
+    padding-top: 0.75rem;
+}
+
+@media print {
+    .hms-doctors-toolbar-row {
+        display: none !important;
+    }
+    .hms-doctor-card {
+        break-inside: avoid;
+    }
+}
+
+/*
+ * Legacy style.css sets .sidebar-menu ul ul { display: none } for old PreClinic submenus.
+ * HMS SOA sidebar nests <ul> inside Bootstrap .collapse — that rule hid sub-links (clicks did nothing).
+ */
+#sidebar-menu.hms-sidebar-nav ul.hms-sidebar-list > li > .collapse ul {
+    display: block !important;
+}
+
+/* Top-level section groups (Portals / Healthcare / Manage) — nested rows + inner accordions */
+#sidebar-menu.hms-sidebar-nav ul.hms-sidebar-list > li > .collapse.hms-sidebar-group-panel {
+    margin: 0 0.35rem 0.5rem 0.65rem !important;
+    padding: 0.15rem 0 0.35rem !important;
+}
+
+#sidebar-menu.hms-sidebar-nav ul.hms-sidebar-list > li > .collapse.hms-sidebar-group-panel > ul > li.hms-sidebar-expandable > a.hms-sidebar-parent-toggle {
+    cursor: pointer;
+    padding: 10px 14px 10px 12px !important;
+    margin: 2px 8px;
+    border-radius: var(--hms-radius-sm);
+    color: var(--hms-sidebar-text-strong) !important;
+    font-weight: 600;
+    font-size: 0.92rem;
+}
+
+#sidebar-menu.hms-sidebar-nav ul.hms-sidebar-list > li > .collapse.hms-sidebar-group-panel > ul > li.hms-sidebar-expandable > a.hms-sidebar-parent-toggle:hover {
+    color: #f8fafc !important;
+    background: var(--hms-sidebar-hover-bg) !important;
+}
+
+#sidebar-menu.hms-sidebar-nav ul.hms-sidebar-list > li.hms-sidebar-section-group > a.hms-sidebar-parent-toggle.hms-sidebar-section-toggle {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--hms-sidebar-text) !important;
+    margin-top: 4px;
+    border-top: 1px solid var(--hms-sidebar-divider);
+    padding-top: 14px !important;
+}
+
+/* ---- SOA sidebar: modern accordion parents + readable nested links ---- */
+#sidebar-menu.hms-sidebar-nav ul.hms-sidebar-list > li.hms-sidebar-expandable > a.hms-sidebar-parent-toggle {
+    cursor: pointer;
+    padding: 10px 14px 10px 12px !important;
+    margin: 2px 8px;
+    border-radius: var(--hms-radius-sm);
+    color: var(--hms-sidebar-text-strong) !important;
+    font-weight: 600;
+    font-size: 0.92rem;
+}
+
+#sidebar-menu.hms-sidebar-nav ul.hms-sidebar-list > li.hms-sidebar-expandable > a.hms-sidebar-parent-toggle:hover {
+    color: #f8fafc !important;
+    background: var(--hms-sidebar-hover-bg) !important;
+}
+
+#sidebar-menu.hms-sidebar-nav .hms-soa-chevron {
+    font-size: 12px;
+    opacity: 0.85;
+    transition: transform 0.22s ease;
+    color: var(--hms-sidebar-text);
+}
+
+#sidebar-menu.hms-sidebar-nav a.hms-sidebar-parent-toggle.collapsed .hms-soa-chevron {
+    transform: rotate(-90deg);
+}
+
+#sidebar-menu.hms-sidebar-nav ul.hms-sidebar-list > li > .collapse.hms-sidebar-submenu {
+    margin: 0 0.35rem 0.5rem 0.65rem !important;
+    padding: 0.35rem 0.25rem 0.45rem 0.5rem !important;
+    background: var(--hms-sidebar-submenu-surface) !important;
+    border-radius: 0 10px 10px 0;
+    border-left: 2px solid var(--hms-sidebar-rail) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+#sidebar-menu.hms-sidebar-nav ul.hms-sidebar-list ul.hms-sidebar-submenu-list {
+    display: block !important;
+    background: transparent !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#sidebar-menu.hms-sidebar-nav .hms-sidebar-submenu-list > li:not(.hms-sidebar-submenu-heading) > a {
+    display: flex !important;
+    align-items: center;
+    padding: 0.5rem 0.65rem 0.5rem 0.6rem !important;
+    margin: 2px 0 !important;
+    font-size: 13px !important;
+    font-weight: 500;
+    line-height: 1.3;
+    color: #e2e8f0 !important;
+    background: transparent !important;
+    border-radius: 8px;
+    text-decoration: none !important;
+}
+
+#sidebar-menu.hms-sidebar-nav .hms-sidebar-submenu-list > li:not(.hms-sidebar-submenu-heading) > a:hover {
+    color: #fff !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+#sidebar-menu.hms-sidebar-nav .hms-sidebar-submenu-list > li.active > a {
+    color: #fff !important;
+    background: linear-gradient(
+        90deg,
+        rgba(13, 148, 136, 0.55) 0%,
+        rgba(13, 148, 136, 0.2) 100%
+    ) !important;
+    box-shadow: 0 0 0 1px var(--hms-sidebar-accent-glow);
+}
+
+#sidebar-menu.hms-sidebar-nav .hms-sidebar-submenu-heading {
+    list-style: none;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--hms-sidebar-text) !important;
+    padding: 0.65rem 0.65rem 0.25rem !important;
+    margin-top: 0.25rem;
+    pointer-events: none;
+}
+
+#sidebar-menu.hms-sidebar-nav .hms-sidebar-submenu--settings .hms-sidebar-submenu-heading:first-child {
+    padding-top: 0.35rem !important;
+}
+
+#sidebar-menu.hms-sidebar-nav li.hms-sidebar-expandable.active > a.hms-sidebar-parent-toggle {
+    color: #fff !important;
+    background: var(--hms-sidebar-parent-open) !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.28);
+}
+
+#sidebar-menu.hms-sidebar-nav li.hms-sidebar-item.active .hms-sidebar-submenu a {
+    color: #e2e8f0 !important;
+    background: transparent !important;
+    font-weight: 500;
+}
+
+#sidebar-menu.hms-sidebar-nav li.hms-sidebar-item.active .hms-sidebar-submenu li.active > a {
+    color: #fff !important;
+    background: linear-gradient(
+        90deg,
+        rgba(13, 148, 136, 0.55) 0%,
+        rgba(13, 148, 136, 0.2) 100%
+    ) !important;
+    box-shadow: 0 0 0 1px var(--hms-sidebar-accent-glow);
+}
+
+/* Beat legacy PreClinic light strip + huge left padding on nested sidebar links */
+#sidebar-menu.hms-sidebar-nav.sidebar-menu ul ul {
+    background-color: transparent !important;
+}
+
+#sidebar-menu.hms-sidebar-nav.sidebar-menu ul ul a {
+    padding-left: 0.6rem !important;
+}
+
+.sidebar-menu li a {
+    color: var(--hms-sidebar-text) !important;
+    border-radius: 0;
+    padding: 10px 18px !important;
+    margin: 2px 10px;
+    border-radius: var(--hms-radius-sm);
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+}
+
+.sidebar-menu li a i {
+    width: 20px;
+    text-align: center;
+    opacity: 0.9;
+}
+
+.sidebar-menu li a:hover {
+    color: var(--hms-sidebar-text-strong) !important;
+    background: var(--hms-sidebar-hover-bg) !important;
+}
+
+/* Top-level active row only — avoid painting every nested submenu link */
+#sidebar-menu.sidebar-menu > ul.hms-sidebar-list > li.active > a {
+    color: #fff !important;
+    background: #0c8b8b !important;
+    border: none;
+    box-shadow: 0 4px 10px rgba(12, 139, 139, 0.25);
+    border-radius: 8px;
+    margin: 2px 14px;
+}
+
+/* Collapsible section panels (Portals / Healthcare / Manage) — direct row link only, not submenu */
+#sidebar-menu.sidebar-menu ul.hms-sidebar-group-panel > ul > li.active > a {
+    color: #fff !important;
+    background: #0c8b8b !important;
+    border: none;
+    box-shadow: 0 4px 10px rgba(12, 139, 139, 0.25);
+    border-radius: 8px;
+    margin: 2px 14px;
+}
+
+/* Grouped sidebar (modern HMS-style nav) */
+.hms-sidebar-brand {
+    border-bottom: 1px solid var(--hms-sidebar-divider);
+    margin-bottom: 0.35rem;
+}
+
+.hms-sidebar-brand-icon {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(
+        145deg,
+        var(--hms-sidebar-accent-deep) 0%,
+        var(--hms-primary) 48%,
+        var(--hms-sidebar-bg-mid) 100%
+    );
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.35), 0 0 0 1px var(--hms-sidebar-accent-glow);
+}
+
+.hms-sidebar-brand-site {
+    color: var(--hms-sidebar-text-strong) !important;
+    font-weight: 500;
+}
+
+.hms-sidebar-brand-text {
+    font-size: 1rem !important;
+    color: var(--hms-sidebar-text-strong) !important;
+    white-space: nowrap;
+    letter-spacing: -0.01em;
+}
+
+.hms-sidebar-nav {
+    padding-top: 0.25rem;
+}
+
+.hms-sidebar-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.hms-sidebar-group {
+    border-radius: var(--hms-radius-sm);
+    overflow: hidden;
+}
+
+.hms-sidebar-group-toggle {
+    background: transparent;
+    color: var(--hms-sidebar-text-strong) !important;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.55rem 0.65rem 0.45rem !important;
+    margin: 0.15rem 0 0;
+    border-radius: var(--hms-radius-sm) !important;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.hms-sidebar-group-toggle:hover,
+.hms-sidebar-group-toggle:focus {
+    background: var(--hms-sidebar-hover-bg) !important;
+    color: var(--hms-sidebar-text-strong) !important;
+    outline: none;
+    box-shadow: none;
+}
+
+.hms-sidebar-chevron {
+    opacity: 0.65;
+    transition: transform 0.2s ease;
+}
+
+.hms-sidebar-group-toggle:not(.collapsed) .hms-sidebar-chevron {
+    transform: rotate(-180deg);
+}
+
+.hms-sidebar-group-icon {
+    width: 1.35rem;
+    text-align: center;
+    margin-right: 0.5rem;
+    opacity: 0.88;
+    font-size: 13px;
+}
+
+.hms-sidebar-group-title {
+    font-size: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+}
+
+/* Legacy accordion groups only — SOA uses .hms-sidebar-submenu with its own chrome */
+.hms-sidebar-nav .collapse:not(.hms-sidebar-submenu):not(.hms-sidebar-group-panel) {
+    border-left: 2px solid var(--hms-sidebar-rail);
+    margin: 0 0 0.35rem 0.5rem;
+    padding-left: 0.35rem;
+}
+
+.hms-sidebar-list {
+    font-size: 13px;
+    /* Never hide primary nav lists (legacy theme used .sidebar-menu ul ul { display:none } for submenus) */
+    display: block !important;
+}
+
+.hms-sidebar-list > li > a {
+    padding-left: 0.65rem !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.hms-sidebar-item + .hms-sidebar-item > a {
+    margin-top: 1px;
+}
+
+/* Active rail on direct row links only (not every anchor under an open section) */
+.hms-sidebar-item.active > a {
+    border-left: 3px solid var(--hms-sidebar-accent) !important;
+    padding-left: calc(0.65rem - 3px) !important;
+}
+
+@media (min-width: 992px) {
+    .mini-sidebar .hms-sidebar-brand-site,
+    .mini-sidebar .hms-sidebar-brand-text,
+    .mini-sidebar .hms-sidebar-brand-line1,
+    .mini-sidebar .hms-sidebar-brand-line2 {
+        display: none !important;
+    }
+
+    .mini-sidebar .hms-sidebar-brand {
+        justify-content: center !important;
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+
+    .mini-sidebar .hms-sidebar-group-title {
+        display: none !important;
+    }
+
+    .mini-sidebar .hms-sidebar-group-toggle {
+        justify-content: center !important;
+        padding-left: 0.35rem !important;
+        padding-right: 0.35rem !important;
+    }
+
+    .mini-sidebar .hms-sidebar-group-icon {
+        margin-right: 0 !important;
+    }
+
+    .mini-sidebar .hms-sidebar-chevron {
+        display: none;
+    }
+
+    .mini-sidebar .hms-sidebar-nav .collapse:not(.hms-sidebar-submenu):not(.hms-sidebar-group-panel) {
+        border-left: none;
+        margin-left: 0;
+        padding-left: 0;
+    }
+
+    .mini-sidebar.expand-menu .hms-sidebar-brand-site,
+    .mini-sidebar.expand-menu .hms-sidebar-brand-text,
+    .mini-sidebar.expand-menu .hms-sidebar-brand-line1,
+    .mini-sidebar.expand-menu .hms-sidebar-brand-line2,
+    .mini-sidebar.expand-menu .hms-sidebar-group-title {
+        display: block !important;
+    }
+
+    .mini-sidebar.expand-menu .hms-sidebar-brand-line1,
+    .mini-sidebar.expand-menu .hms-sidebar-brand-line2 {
+        text-align: center;
+    }
+
+    .mini-sidebar.expand-menu .hms-sidebar-chevron {
+        display: block;
+    }
+
+    .mini-sidebar.expand-menu .hms-sidebar-group-icon {
+        margin-right: 0.5rem !important;
+    }
+
+    .mini-sidebar.expand-menu .hms-sidebar-group-toggle {
+        justify-content: space-between !important;
+        padding-left: 0.65rem !important;
+        padding-right: 0.65rem !important;
+    }
+
+    .mini-sidebar.expand-menu .hms-sidebar-brand {
+        justify-content: space-between !important;
+    }
+
+    .mini-sidebar.expand-menu .hms-sidebar-nav .collapse:not(.hms-sidebar-submenu) {
+        border-left: 2px solid var(--hms-sidebar-rail);
+        margin-left: 0.5rem;
+        padding-left: 0.35rem;
+    }
+}
+
+/* Main content */
+.page-wrapper {
+    background: transparent !important;
+}
+
+.content {
+    padding: 24px 20px 40px !important;
+}
+
+.page-title {
+    font-size: 1.35rem !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em;
+    color: var(--hms-text) !important;
+    margin-bottom: 0.25rem !important;
+}
+
+/* Cards & tables */
+.card {
+    border: 1px solid var(--hms-border) !important;
+    border-radius: var(--hms-radius) !important;
+    box-shadow: var(--hms-shadow) !important;
+}
+
+.card-header {
+    background: var(--hms-surface-elevated) !important;
+    border-bottom: 1px solid var(--hms-border) !important;
+    font-weight: 600;
+}
+
+.table {
+    background: var(--hms-surface-elevated);
+}
+
+.table thead th {
+    border-bottom-width: 1px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--hms-text-muted);
+    font-weight: 600;
+}
+
+.dash-widget {
+    border-radius: var(--hms-radius) !important;
+    border: 1px solid var(--hms-border) !important;
+    box-shadow: var(--hms-shadow) !important;
+    overflow: hidden;
+}
+
+.btn-primary {
+    background-color: var(--hms-primary) !important;
+    border-color: var(--hms-primary) !important;
+    border-radius: var(--hms-radius-sm) !important;
+    font-weight: 600;
+    padding: 0.45rem 1.1rem;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--hms-primary-hover) !important;
+    border-color: var(--hms-primary-hover) !important;
+}
+
+.btn-outline-primary {
+    color: var(--hms-primary) !important;
+    border-color: var(--hms-primary) !important;
+    border-radius: var(--hms-radius-sm) !important;
+}
+
+.btn-outline-primary:hover {
+    background: var(--hms-primary-soft) !important;
+}
+
+.form-control {
+    border-radius: var(--hms-radius-sm) !important;
+    border-color: var(--hms-border);
+}
+
+.form-control:focus {
+    border-color: var(--hms-primary);
+    box-shadow: 0 0 0 3px var(--hms-primary-soft);
+}
+
+/* Alerts on platform pages */
+.alert-info {
+    border-radius: var(--hms-radius);
+    border: 1px solid #bae6fd;
+    background: #f0f9ff;
+}
+
+/* DataTables striping harmony */
+table.dataTable tbody tr {
+    background-color: var(--hms-surface-elevated) !important;
+}
+
+/* Login page (account) */
+body.account-page {
+    background: linear-gradient(160deg, #ecfeff 0%, #f0fdfa 40%, #e0f2fe 100%) !important;
+}
+
+.account-box {
+    border-radius: 16px !important;
+    box-shadow: 0 24px 80px rgba(15, 23, 42, 0.12) !important;
+    border: 1px solid var(--hms-border) !important;
+    max-width: 420px;
+}
+
+.hms-login-title {
+    font-weight: 600;
+    color: var(--hms-text-muted) !important;
+}
+
+/* Dropdowns */
+.dropdown-menu {
+    border-radius: var(--hms-radius-sm);
+    border: 1px solid var(--hms-border);
+    box-shadow: var(--hms-shadow);
+}
+
+/* Custom badges */
+.custom-badge {
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+/*
+ * Do NOT set min-height on .main-wrapper: .header and .sidebar are position:fixed,
+ * so the wrapper has almost no in-flow height. min-height:100vh reserved a full
+ * viewport of blank space and pushed .page-wrapper below the fold.
+ */
+
+/* -------------------------------------------------------------------------
+   EHR-style shell (clean top bar, workspace tiles — inspired by modern EMRs)
+   ------------------------------------------------------------------------- */
+.hms-ehr-shell .header.hms-topbar {
+    backdrop-filter: saturate(1.2) blur(8px);
+}
+
+.hms-ehr-shell .header-left.hms-topbar-brand {
+    border-right: 1px solid var(--hms-border);
+    margin-right: 0.25rem;
+}
+
+.hms-ehr-shell .header .logo {
+    border-radius: var(--hms-radius-sm);
+    padding: 0 0.35rem;
+    transition: background 0.15s ease;
+}
+
+.hms-ehr-shell .header .logo:hover {
+    background: var(--hms-surface);
+}
+
+.hms-ehr-shell .user-menu .nav-link {
+    border-radius: 999px;
+    padding-left: 0.85rem !important;
+    padding-right: 0.85rem !important;
+}
+
+.hms-ehr-shell .hms-page-toolbar {
+    border-radius: var(--hms-radius) !important;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%) !important;
+}
+
+.hms-ehr-shell .hms-page-heading {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--hms-text);
+}
+
+.hms-ehr-shell .hms-breadcrumb .breadcrumb-item,
+.hms-ehr-shell .hms-breadcrumb a {
+    font-size: 0.8125rem;
+}
+
+.hms-hub-card {
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    border: 1px solid var(--hms-border) !important;
+}
+
+a.hms-hub-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.1) !important;
+    border-color: rgba(12, 139, 139, 0.35) !important;
+}
+
+.hms-hub-card--muted {
+    opacity: 0.72;
+    pointer-events: none;
+}
+
+.hms-hub-card-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--hms-primary-soft);
+    color: var(--hms-primary);
+    font-size: 1.1rem;
+}
+
+/* Financials hub (Accounting → Financials) */
+.hms-financials-page .hms-fin-status-panel {
+    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid var(--hms-border) !important;
+    border-radius: var(--hms-radius) !important;
+    transition: box-shadow 0.2s ease;
+}
+
+.hms-financials-page .hms-fin-status-panel:hover {
+    box-shadow: 0 8px 28px rgba(15, 23, 42, 0.07) !important;
+}
+
+.hms-financials-page .hms-fin-site-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--hms-text-muted);
+}
+
+.hms-financials-page .hms-fin-section-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--hms-text-muted);
+}
+
+.hms-ehr-shell .content {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* -------------------------------------------------------------------------
+   Dashboard — Dreams EMR–style overview (demo: dreamsemr.dreamstechnologies.com)
+   ------------------------------------------------------------------------- */
+.hms-dashboard-page .hms-dash-shortcuts {
+    border-radius: var(--hms-radius) !important;
+    border: 1px solid var(--hms-border) !important;
+}
+
+.hms-stat-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    height: 100%;
+    min-height: 118px;
+    padding: 1.1rem 1rem;
+    background: var(--hms-surface-elevated);
+    border: 1px solid var(--hms-border);
+    border-radius: var(--hms-radius);
+    box-shadow: var(--hms-shadow);
+    text-decoration: none !important;
+    color: inherit !important;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.hms-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 36px rgba(15, 23, 42, 0.08);
+    border-color: rgba(12, 139, 139, 0.28) !important;
+}
+
+.hms-stat-card__icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.hms-stat-card__icon--primary {
+    background: rgba(12, 139, 139, 0.14);
+    color: var(--hms-primary);
+}
+
+.hms-stat-card__icon--teal {
+    background: rgba(20, 184, 166, 0.15);
+    color: #0d9488;
+}
+
+.hms-stat-card__icon--violet {
+    background: rgba(139, 92, 246, 0.12);
+    color: #7c3aed;
+}
+
+.hms-stat-card__icon--amber {
+    background: rgba(245, 158, 11, 0.14);
+    color: #d97706;
+}
+
+.hms-stat-card__icon--rose {
+    background: rgba(244, 63, 94, 0.1);
+    color: #e11d48;
+}
+
+.hms-stat-card__icon--slate {
+    background: rgba(100, 116, 139, 0.12);
+    color: #475569;
+}
+
+.hms-stat-card__body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+}
+
+.hms-stat-card__label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--hms-text-muted);
+    margin-bottom: 0.2rem;
+}
+
+.hms-stat-card__value {
+    font-size: 1.65rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    color: var(--hms-text);
+}
+
+.hms-stat-card__value--sm {
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.hms-stat-card__hint {
+    font-size: 0.72rem;
+    color: var(--hms-text-muted);
+    margin-top: 0.25rem;
+}
+
+.hms-dash-chart-card .card-title,
+.hms-dash-side-card .card-title,
+.hms-dash-table-card .card-title,
+.hms-dash-team-card .card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.hms-dash-chart-wrap {
+    position: relative;
+    height: 260px;
+}
+
+.hms-dash-appt-table thead th {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-top: none;
+    color: var(--hms-text-muted);
+}
+
+.hms-dash-appt-name {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--hms-text);
+}
+
+.hms-dash-appt-meta {
+    font-size: 0.75rem;
+    color: var(--hms-text-muted);
+    margin-top: 0.1rem;
+}
+
+.hms-dash-patient-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hms-dash-patient-table tbody td {
+    vertical-align: middle;
+}
+
+.badge-soft-success {
+    background: rgba(34, 197, 94, 0.12);
+    color: #15803d;
+    font-weight: 600;
+    font-size: 0.75rem;
+    padding: 0.35em 0.65em;
+}
+
+.badge-soft-danger {
+    background: rgba(244, 63, 94, 0.1);
+    color: #be123c;
+    font-weight: 600;
+    font-size: 0.75rem;
+    padding: 0.35em 0.65em;
+}
+
+.hms-dash-team-list {
+    padding: 0;
+    margin: 0;
+}
+
+.hms-dash-team-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--hms-border);
+}
+
+.hms-dash-team-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.hms-dash-team-avatar {
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.hms-dash-team-text {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.hms-dash-team-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--hms-text);
+}
+
+.hms-dash-team-role {
+    font-size: 0.78rem;
+    color: var(--hms-text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.hms-dash-team-status {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.25);
+}
+
+/* -------------------------------------------------------------------------
+   Patients module — card grid (reference: Dreams EMR patients card view)
+   ------------------------------------------------------------------------- */
+.hms-patients-page .hms-patients-shell {
+    border-radius: var(--hms-radius) !important;
+    border: 1px solid var(--hms-border) !important;
+    overflow: hidden;
+}
+
+.hms-patients-page .hms-patients-card-head {
+    padding: 1rem 1.25rem;
+}
+
+.hms-patients-page .hms-patients-card-body {
+    padding: 1.25rem;
+    background: #f1f5f9;
+}
+
+.hms-patients-page .hms-patients-card-toolbar {
+    min-width: 200px;
+    flex: 1 1 220px;
+    max-width: 320px;
+}
+
+.hms-patients-page .hms-patients-card-search {
+    border-radius: 999px !important;
+    border: 1px solid var(--hms-border) !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+}
+
+.hms-patient-card {
+    border-radius: var(--hms-radius) !important;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.hms-patient-card:hover {
+    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.1) !important;
+    transform: translateY(-2px);
+}
+
+.hms-patient-card--inactive {
+    opacity: 0.88;
+}
+
+.hms-pcard-badge {
+    font-weight: 600;
+    font-size: 0.68rem;
+    padding: 0.4em 0.75em;
+    border-radius: 8px;
+    letter-spacing: 0.02em;
+}
+
+.hms-pcard-badge--out {
+    background: #ffedd5;
+    color: #c2410c;
+}
+
+.hms-pcard-badge--in {
+    background: #ede9fe;
+    color: #6d28d9;
+}
+
+.hms-pcard-more {
+    line-height: 1;
+    min-width: 2rem;
+}
+
+.hms-pcard-avatar {
+    object-fit: cover;
+    border: 2px solid #fff;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.12);
+}
+
+.hms-pcard-id {
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+}
+
+.hms-pcard-name {
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+    color: var(--hms-text);
+}
+
+.hms-pcard-stats {
+    border: 1px solid var(--hms-border);
+    border-radius: var(--hms-radius-sm);
+    background: #fff;
+    overflow: hidden;
+}
+
+.hms-pcard-stat-cell {
+    padding: 0.65rem 0.25rem;
+    border-right: 1px solid var(--hms-border);
+}
+
+.hms-pcard-stat-cell:last-child {
+    border-right: none;
+}
+
+.hms-pcard-stat-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--hms-text-muted);
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+}
+
+.hms-pcard-stat-value {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--hms-text);
+}
+
+.hms-pcard-appt-btn {
+    background: #0f172a !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: var(--hms-radius-sm) !important;
+    padding: 0.55rem 1rem !important;
+    font-size: 0.875rem;
+}
+
+.hms-pcard-appt-btn:hover {
+    background: #1e293b !important;
+    color: #fff !important;
+}
+
+/* Visits — Dreams EMR style (https://dreamsemr.dreamstechnologies.com/react/visits) */
+.hms-visits-dreams {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hms-visits-dreams .btn-primary {
+    background: #2563eb;
+    border-color: #2563eb;
+}
+
+.hms-visits-dreams .btn-primary:hover,
+.hms-visits-dreams .btn-primary:focus {
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+}
+
+.hms-visits-keyword-bar .card-body {
+    padding: 0.65rem 1rem;
+}
+
+.hms-visits-keyword-input {
+    border-radius: 10px !important;
+    border: 1px solid var(--hms-border) !important;
+    height: 42px;
+}
+
+.hms-visits-keyword-btn {
+    border-radius: 10px !important;
+    min-width: 48px;
+}
+
+.hms-visits-dreams-title {
+    font-size: 1.65rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--hms-text);
+}
+
+.hms-visits-dreams-bc .breadcrumb-item,
+.hms-visits-dreams-bc .breadcrumb-item a {
+    font-size: 0.875rem;
+    color: var(--hms-text-muted);
+}
+
+.hms-visits-dreams-bc .breadcrumb-item + .breadcrumb-item::before {
+    content: "»";
+    padding: 0 0.35rem;
+    color: #cbd5e1;
+}
+
+.hms-visits-icon-btn {
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px !important;
+    color: var(--hms-text-muted) !important;
+}
+
+.hms-visits-icon-btn:hover {
+    color: var(--hms-primary) !important;
+    background: var(--hms-primary-soft) !important;
+}
+
+/* Today Visits — card grid (Dreams EMR style) */
+.hms-today-nav-btn {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #f8fafc;
+    color: #64748b;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.hms-today-nav-btn:hover {
+    background: #f1f5f9;
+    color: #334155;
+    border-color: #cbd5e1;
+}
+
+.hms-today-visits-scroll {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    margin: 0 -0.25rem;
+    padding: 0 0.25rem 0.35rem;
+    -webkit-overflow-scrolling: touch;
+}
+
+.hms-today-visits-scroll::-webkit-scrollbar {
+    height: 6px;
+}
+
+.hms-today-visits-scroll::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+.hms-today-visits-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+}
+
+@media (min-width: 768px) {
+    .hms-today-visits-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.hms-today-visits-empty {
+    grid-column: 1 / -1;
+}
+
+.hms-today-visit-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.hms-today-visit-card__hero {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.9rem 1rem;
+    background: #f0f4f8;
+    border-bottom: 1px solid #e8eef3;
+}
+
+.hms-today-visit-card__pt-photo {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(145deg, #64748b, #475569);
+    letter-spacing: 0.02em;
+}
+
+.hms-today-visit-card__name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.25;
+}
+
+.hms-today-visit-card__last {
+    font-size: 0.78rem;
+    color: #64748b;
+    margin-top: 0.2rem;
+}
+
+.hms-today-visit-card__mid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem 1rem;
+    padding: 1rem 1rem 0.85rem;
+    flex: 1 1 auto;
+}
+
+.hms-today-visit-card__label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #94a3b8;
+    margin-bottom: 0.45rem;
+}
+
+.hms-today-visit-card__label--right {
+    text-align: right;
+}
+
+.hms-today-visit-card__doctor-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+}
+
+.hms-today-visit-card__doc-photo {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid #e5e7eb;
+    background: #f8fafc;
+}
+
+.hms-today-visit-card__doc-photo--placeholder {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    font-size: 0.85rem;
+}
+
+.hms-today-visit-card__doc-name {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #1e293b;
+    line-height: 1.3;
+    word-break: break-word;
+}
+
+.hms-today-visit-card__col--treatment {
+    text-align: right;
+}
+
+.hms-today-visit-card__treatment {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #334155;
+    line-height: 1.35;
+    word-break: break-word;
+}
+
+.hms-today-visit-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem 0.95rem;
+    margin-top: auto;
+    border-top: 1px solid #f1f5f9;
+}
+
+.hms-today-visit-card__dept {
+    font-size: 0.78rem;
+    color: #64748b;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-width: 0;
+}
+
+.hms-today-visit-card__dept-icon {
+    color: #94a3b8;
+    flex-shrink: 0;
+}
+
+.hms-today-start-link {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #2563eb !important;
+    text-decoration: underline !important;
+    text-underline-offset: 2px;
+    white-space: nowrap;
+}
+
+.hms-today-start-link:hover {
+    color: #1d4ed8 !important;
+}
+
+.hms-visits-count-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.25rem;
+    padding: 0.2rem 0.55rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #fff;
+    background: #ef4444;
+    border-radius: 999px;
+}
+
+.hms-visits-sort-select {
+    min-width: 8.5rem;
+    border-radius: 8px !important;
+}
+
+.hms-visits-dreams-table thead th {
+    border: none;
+    padding-top: 0.75rem;
+    padding-bottom: 0.5rem;
+}
+
+.hms-visits-dreams-thead th {
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+    color: #94a3b8 !important;
+}
+
+.hms-visits-dreams-row td {
+    border-top: 1px solid #f1f5f9;
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
+    vertical-align: middle;
+}
+
+.hms-visits-dreams-row:hover td {
+    background: #fafbfc;
+}
+
+.hms-visit-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #0c8b8b, #0f766e);
+    flex-shrink: 0;
+}
+
+.hms-visit-avatar--sm {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    font-size: 0.65rem;
+}
+
+.hms-visit-avatar--patient {
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+}
+
+.hms-visit-avatar-img {
+    object-fit: cover;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+}
+
+.hms-visit-pill {
+    display: inline-block;
+    padding: 0.28rem 0.75rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border-radius: 999px;
+    letter-spacing: 0.02em;
+}
+
+.hms-visit-pill--inprogress {
+    color: #1d4ed8;
+    background: #dbeafe;
+}
+
+.hms-visit-pill--completed {
+    color: #15803d;
+    background: #dcfce7;
+}
+
+.hms-visit-pill--pending {
+    color: #c2410c;
+    background: #ffedd5;
+}
+
+.hms-visit-pill--cancelled {
+    color: #64748b;
+    background: #f1f5f9;
+}
+
+.hms-visit-modal-content {
+    border-radius: var(--hms-radius) !important;
+}
+
+@media print {
+    .no-print,
+    .sidebar,
+    .header,
+    .hms-visits-keyword-bar,
+    .hms-visits-dreams-toolbar,
+    .hms-visits-today-section,
+    #hmsVisitAddModal {
+        display: none !important;
+    }
+
+    .hms-visits-print-root .content {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .hms-visits-total-section {
+        box-shadow: none !important;
+        border: none !important;
+    }
+}
+
+/* ---- Appointments (Dreams-style, mirrors visits shell) ---- */
+.hms-appts-dreams {
+    --hms-appt-primary: #0c8b8b;
+}
+
+.hms-appts-dreams .btn-primary {
+    background: var(--hms-appt-primary) !important;
+    border-color: var(--hms-appt-primary) !important;
+}
+
+.hms-appts-dreams .btn-primary:hover,
+.hms-appts-dreams .btn-primary:focus {
+    background: #0a7373 !important;
+    border-color: #0a7373 !important;
+}
+
+.hms-appts-keyword-bar .card-body {
+    padding: 0.65rem 1rem !important;
+}
+
+.hms-appts-keyword-input {
+    border-radius: 10px !important;
+    border: 1px solid #e2e8f0 !important;
+    min-height: 42px;
+}
+
+.hms-appts-keyword-btn {
+    border-radius: 10px !important;
+    min-height: 42px;
+}
+
+.hms-appts-dreams-title {
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: #0f172a;
+    letter-spacing: -0.02em;
+}
+
+.hms-appts-dreams-bc .breadcrumb-item,
+.hms-appts-dreams-bc .breadcrumb-item a {
+    font-size: 0.875rem;
+    color: #64748b;
+}
+
+.hms-appts-dreams-bc .breadcrumb-item + .breadcrumb-item::before {
+    color: #cbd5e1;
+}
+
+.hms-appts-icon-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #475569;
+}
+
+.hms-appts-icon-btn:hover {
+    background: #f8fafc !important;
+    color: #0f172a;
+}
+
+.hms-appts-count-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.25rem;
+    padding: 0.2rem 0.55rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #fff;
+    background: #ef4444;
+    border-radius: 999px;
+}
+
+.hms-appts-sort-select {
+    min-width: 8.5rem;
+    border-radius: 8px !important;
+}
+
+.hms-appts-dreams-table thead th {
+    border: none;
+    padding-top: 0.75rem;
+    padding-bottom: 0.5rem;
+}
+
+.hms-appts-dreams-thead th {
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+    color: #94a3b8 !important;
+}
+
+.hms-appts-dreams-row td {
+    border-top: 1px solid #f1f5f9;
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
+    vertical-align: middle;
+}
+
+.hms-appts-dreams-row:hover td {
+    background: #fafbfc;
+}
+
+.hms-appt-pill {
+    display: inline-block;
+    padding: 0.28rem 0.75rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border-radius: 999px;
+    letter-spacing: 0.02em;
+}
+
+.hms-appt-pill--upcoming {
+    color: #6d28d9;
+    background: #ede9fe;
+}
+
+.hms-appt-pill--inprogress {
+    color: #1d4ed8;
+    background: #dbeafe;
+}
+
+.hms-appt-pill--completed {
+    color: #15803d;
+    background: #dcfce7;
+}
+
+.hms-appt-pill--inactive {
+    color: #64748b;
+    background: #f1f5f9;
+}
+
+.hms-appt-modal-content {
+    border-radius: var(--hms-radius) !important;
+}
+
+.hms-appt-cal-card {
+    border-radius: var(--hms-radius) !important;
+}
+
+.hms-appt-cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background: #e2e8f0;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.hms-appt-cal-wd {
+    background: #f8fafc;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #64748b;
+    text-align: center;
+    padding: 0.5rem 0.25rem;
+}
+
+.hms-appt-cal-cell {
+    background: #fff;
+    min-height: 88px;
+    padding: 0.35rem 0.45rem;
+    position: relative;
+}
+
+.hms-appt-cal-cell--muted {
+    background: #fafbfc;
+    color: #94a3b8;
+}
+
+.hms-appt-cal-cell--today {
+    background: #eff6ff;
+}
+
+.hms-appt-cal-daynum {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.hms-appt-cal-cell--muted .hms-appt-cal-daynum {
+    color: #94a3b8;
+}
+
+.hms-appt-cal-avatars {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 0.35rem;
+}
+
+.hms-appt-cal-av {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 999px;
+    font-size: 0.55rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    text-decoration: none !important;
+}
+
+.hms-appt-cal-av:hover {
+    color: #fff;
+    opacity: 0.92;
+}
+
+/* Laboratory registry — status pills (Dreams-style) */
+.hms-lab-pill {
+    display: inline-block;
+    padding: 0.2rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.25;
+    white-space: nowrap;
+}
+
+.hms-lab-pill--pending {
+    color: #c2410c;
+    background: #ffedd5;
+}
+
+.hms-lab-pill--in_progress {
+    color: #1d4ed8;
+    background: #dbeafe;
+}
+
+.hms-lab-pill--received {
+    color: #15803d;
+    background: #dcfce7;
+}
+
+/* Requests module — circular view / confirm actions (Dreams EMR style) */
+.hms-request-action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    vertical-align: middle;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.hms-request-action-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12);
+}
+.hms-request-action-btn--view {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+.hms-request-action-btn--view:hover {
+    color: #991b1b;
+}
+.hms-request-action-btn--confirm {
+    background: #dcfce7;
+    color: #166534;
+}
+.hms-request-action-btn--confirm:hover {
+    color: #14532d;
+}
+
+@media print {
+    .hms-appts-keyword-bar,
+    .hms-appts-dreams-toolbar,
+    #hmsApptAddModal {
+        display: none !important;
+    }
+
+    .hms-appts-print-root .content {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .hms-lab-print-root .no-print {
+        display: none !important;
+    }
+
+    .hms-lab-print-root .content {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .hms-requests-print-root .no-print,
+    .hms-requests-print-root .hms-appts-keyword-bar,
+    .hms-requests-print-root .hms-appts-dreams-toolbar {
+        display: none !important;
+    }
+
+    .hms-requests-print-root .content {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+}
+
+/* Sidebar expansion and submenu improvements */
+.sidebar {
+    width: 220px !important;
+}
+.page-wrapper {
+    margin-left: 220px !important;
+}
+@media (max-width: 991.98px) {
+    .sidebar {
+        margin-left: -220px !important;
+    }
+    .page-wrapper {
+        margin-left: 0 !important;
+    }
+    .slide-nav .page-wrapper {
+        left: 220px !important;
+    }
+}
+
+.hms-sidebar-nav .collapse {
+    background-color: transparent !important;
+}
+.hms-sidebar-nav .collapse ul {
+    border-left: 2px solid var(--hms-sidebar-rail);
+    margin-left: 25px;
+    padding-left: 0;
+    margin-top: 5px;
+}
+.hms-sidebar-nav .collapse ul li {
+    margin-bottom: 2px;
+}
+.hms-sidebar-nav .collapse ul li a {
+    color: var(--hms-sidebar-text) !important;
+    padding: 8px 15px 8px 15px !important;
+    font-size: 0.9rem;
+    display: block;
+    text-decoration: none;
+    border-radius: 4px;
+    background-color: transparent !important;
+}
+.hms-sidebar-nav .collapse ul li a:hover,
+.hms-sidebar-nav .collapse ul li a.active {
+    color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* -------------------------------------------------------------------------
+   Global module shell — modern surfaces & motion (all pages under .hms-ehr-shell)
+   ------------------------------------------------------------------------- */
+
+.hms-ehr-shell .page-wrapper .content {
+    padding-top: 0.35rem;
+    padding-bottom: 2rem;
+}
+
+/* Softer page backdrop */
+.hms-ehr-shell .page-wrapper {
+    background: linear-gradient(180deg, rgba(248, 250, 252, 0.65) 0%, var(--hms-surface) 32%, var(--hms-surface) 100%);
+    min-height: calc(100vh - 50px);
+}
+
+/* Cards — depth + hover (hub cards keep their own lift) */
+.hms-ehr-shell .page-wrapper .content .card:not(.hms-hub-card) {
+    border-radius: var(--hms-radius) !important;
+    border: 1px solid var(--hms-border) !important;
+    box-shadow: var(--hms-shadow) !important;
+    transition: box-shadow 0.28s ease, transform 0.28s ease, border-color 0.2s ease;
+}
+
+.hms-ehr-shell .page-wrapper .content .card:not(.hms-hub-card):hover {
+    box-shadow: 0 10px 36px rgba(15, 23, 42, 0.08) !important;
+    border-color: rgba(12, 139, 139, 0.18) !important;
+}
+
+/* Primary actions */
+.hms-ehr-shell .page-wrapper .btn:not(:disabled) {
+    transition: transform 0.18s ease, box-shadow 0.22s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.hms-ehr-shell .page-wrapper .btn-primary:not(:disabled):active,
+.hms-ehr-shell .page-wrapper .btn-outline-secondary:not(:disabled):active {
+    transform: scale(0.98);
+}
+
+.hms-ehr-shell .page-wrapper .btn-primary:not(:disabled):focus {
+    box-shadow: 0 0 0 0.2rem rgba(12, 139, 139, 0.28);
+}
+
+/* Form controls */
+.hms-ehr-shell .page-wrapper .form-control:focus {
+    border-color: rgba(12, 139, 139, 0.55);
+    box-shadow: 0 0 0 0.15rem rgba(12, 139, 139, 0.15);
+}
+
+/* Tables */
+.hms-ehr-shell .page-wrapper .table-responsive {
+    border-radius: var(--hms-radius-sm);
+    overflow: hidden;
+}
+
+.hms-ehr-shell .page-wrapper .table tbody tr {
+    transition: background-color 0.15s ease;
+}
+
+/* Alerts — slide feel */
+.hms-ehr-shell .page-wrapper .alert {
+    border-radius: var(--hms-radius-sm) !important;
+    border: 1px solid transparent;
+    animation: hms-alert-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes hms-alert-in {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+html.hms-motion-reduced .hms-ehr-shell .page-wrapper .alert {
+    animation: none;
+}
+
+/* Staggered entrance — direct children of .content (JS adds .hms-enter-block) */
+@media (prefers-reduced-motion: no-preference) {
+    html.hms-motion .hms-ehr-shell .page-wrapper .content > .hms-enter-block {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 0.52s cubic-bezier(0.22, 1, 0.36, 1) var(--hms-stagger, 0ms),
+            transform 0.58s cubic-bezier(0.22, 1, 0.36, 1) var(--hms-stagger, 0ms);
+    }
+
+    html.hms-motion .hms-ehr-shell .page-wrapper .content > .hms-enter-block--in {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hub grid columns — extra stagger when landing on module hubs */
+@media (prefers-reduced-motion: no-preference) {
+    html.hms-motion .hms-hub-grid > .hms-hub-col-anim {
+        opacity: 0;
+        transform: translateY(14px) scale(0.99);
+        transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1) var(--hms-hub-delay, 0ms),
+            transform 0.55s cubic-bezier(0.22, 1, 0.36, 1) var(--hms-hub-delay, 0ms);
+    }
+
+    html.hms-motion .hms-hub-grid > .hms-hub-col-anim--in {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Sidebar top-level links — subtle slide */
+@media (prefers-reduced-motion: no-preference) {
+    #sidebar-menu.hms-sidebar-nav > li.hms-sidebar-item > a.hms-sidebar-link-anim {
+        position: relative;
+        transition: transform 0.2s ease, padding-left 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+    }
+
+    #sidebar-menu.hms-sidebar-nav > li.hms-sidebar-item > a.hms-sidebar-link-anim:hover {
+        transform: translateX(4px);
+    }
+}
+
+/* Toolbar already has gradient; subtle pulse on first paint optional — skip */
+

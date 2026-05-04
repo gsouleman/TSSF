@@ -1,0 +1,11 @@
+{
+    "name": "hms/hospital-app",
+    "description": "Hospital Management System — HMS PHP app",
+    "require": {
+        "php": ">=7.4",
+        "dompdf/dompdf": "^2.0"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
